@@ -1,25 +1,10 @@
-import React, { ReactElement } from "react";
-import { View, TouchableWithoutFeedback } from "react-native";
-import {
-  Button,
-  CheckBox,
-  Input,
-  StyleService,
-  Text,
-  useStyleSheet,
-  Icon,
-} from "@ui-kitten/components";
-import { ImageOverlay } from "./extra/image-overlay.component";
-import { ProfileAvatar } from "./extra/profile-avatar.component";
-import {
-  EmailIcon,
-  FacebookIcon,
-  GoogleIcon,
-  PersonIcon,
-  PlusIcon,
-  TwitterIcon,
-} from "./extra/icons";
-import { KeyboardAvoidingView } from "./extra/3rd-party";
+import React, { ReactElement } from 'react';
+import { View, TouchableWithoutFeedback } from 'react-native';
+import { Button, CheckBox, Input, StyleService, Text, useStyleSheet, Icon } from '@ui-kitten/components';
+import { ImageOverlay } from './extra/image-overlay.component';
+import { ProfileAvatar } from './extra/profile-avatar.component';
+import { EmailIcon, FacebookIcon, GoogleIcon, PersonIcon, PlusIcon, TwitterIcon } from './extra/icons';
+import { KeyboardAvoidingView } from './extra/3rd-party';
 
 const SignUpScreen = ({ navigation }): React.ReactElement => {
   const [userName, setUserName] = React.useState<string>();
@@ -35,7 +20,7 @@ const SignUpScreen = ({ navigation }): React.ReactElement => {
   };
 
   const onSignInButtonPress = (): void => {
-    navigation && navigation.navigate("SignIn4");
+    navigation && navigation.navigate('SignIn4');
   };
 
   const onPasswordIconPress = (): void => {
@@ -43,39 +28,32 @@ const SignUpScreen = ({ navigation }): React.ReactElement => {
   };
 
   const renderPhotoButton = (): React.ReactElement => (
-    <Button
-      style={styles.editAvatarButton}
-      size="small"
-      accessoryRight={PlusIcon}
-    />
+    <Button style={styles.editAvatarButton} size="small" accessoryRight={PlusIcon} />
   );
 
   const renderPasswordIcon = (props): ReactElement => (
     <TouchableWithoutFeedback onPress={onPasswordIconPress}>
-      <Icon {...props} name={passwordVisible ? "eye-off" : "eye"} />
+      <Icon {...props} name={passwordVisible ? 'eye-off' : 'eye'} />
     </TouchableWithoutFeedback>
   );
 
   const renderCheckboxLabel = React.useCallback(
-    (evaProps) => (
+    evaProps => (
       <Text {...evaProps} style={styles.termsCheckBoxText}>
         I read and agree to Terms & Conditions
       </Text>
     ),
-    []
+    [],
   );
 
   return (
     <KeyboardAvoidingView>
-      <ImageOverlay
-        style={styles.container}
-        source={require("./assets/image-background.jpg")}
-      >
+      <ImageOverlay style={styles.container} source={require('./assets/image-background.jpg')}>
         <View style={styles.headerContainer}>
           <ProfileAvatar
             style={styles.profileAvatar}
             resizeMode="center"
-            source={require("./assets/image-person.png")}
+            source={require('./assets/image-person.png')}
             editButton={renderPhotoButton}
           />
         </View>
@@ -115,11 +93,7 @@ const SignUpScreen = ({ navigation }): React.ReactElement => {
             {renderCheckboxLabel}
           </CheckBox>
         </View>
-        <Button
-          style={styles.signUpButton}
-          size="giant"
-          onPress={onSignUpButtonPress}
-        >
+        <Button style={styles.signUpButton} size="giant" onPress={onSignUpButtonPress}>
           SIGN UP
         </Button>
         <View style={styles.socialAuthContainer}>
@@ -127,32 +101,12 @@ const SignUpScreen = ({ navigation }): React.ReactElement => {
             Or Register Using Social Media
           </Text>
           <View style={styles.socialAuthButtonsContainer}>
-            <Button
-              appearance="ghost"
-              size="giant"
-              status="control"
-              accessoryLeft={FacebookIcon}
-            />
-            <Button
-              appearance="ghost"
-              size="giant"
-              status="control"
-              accessoryLeft={GoogleIcon}
-            />
-            <Button
-              appearance="ghost"
-              size="giant"
-              status="control"
-              accessoryLeft={TwitterIcon}
-            />
+            <Button appearance="ghost" size="giant" status="control" accessoryLeft={FacebookIcon} />
+            <Button appearance="ghost" size="giant" status="control" accessoryLeft={GoogleIcon} />
+            <Button appearance="ghost" size="giant" status="control" accessoryLeft={TwitterIcon} />
           </View>
         </View>
-        <Button
-          style={styles.signInButton}
-          appearance="ghost"
-          status="control"
-          onPress={onSignInButtonPress}
-        >
+        <Button style={styles.signInButton} appearance="ghost" status="control" onPress={onSignInButtonPress}>
           Already have account? Sign In
         </Button>
       </ImageOverlay>
@@ -167,17 +121,17 @@ const themedStyles = StyleService.create({
     flex: 1,
   },
   headerContainer: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     minHeight: 176,
   },
   profileAvatar: {
     width: 92,
     height: 92,
     borderRadius: 46,
-    alignSelf: "center",
-    backgroundColor: "background-basic-color-1",
-    tintColor: "text-hint-color",
+    alignSelf: 'center',
+    backgroundColor: 'background-basic-color-1',
+    tintColor: 'text-hint-color',
   },
   editAvatarButton: {
     width: 32,
@@ -196,7 +150,7 @@ const themedStyles = StyleService.create({
     marginTop: 24,
   },
   termsCheckBoxText: {
-    color: "text-control-color",
+    color: 'text-control-color',
     marginLeft: 10,
   },
   signUpButton: {
@@ -210,11 +164,11 @@ const themedStyles = StyleService.create({
     marginTop: 24,
   },
   socialAuthButtonsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
   socialAuthHintText: {
-    alignSelf: "center",
+    alignSelf: 'center',
     marginBottom: 16,
   },
 });
